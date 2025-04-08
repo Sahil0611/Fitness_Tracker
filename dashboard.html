@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>FitTrack Pro</h1>
+                    <p>Welcome back, <span id="user-name"></span></p>
+                </div>
+                <div class="header-actions">
+                    <button id="logout-btn" class="btn btn-outline">
+                        <i class="fas fa-sign-out-alt"></i> Log out
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard-content">
+            <div class="dashboard-grid">
+                <!-- BMI Card -->
+                <div class="card bmi-card">
+                    <h2>Your BMI Results</h2>
+                    <div class="bmi-display">
+                        <span id="bmi-display"></span>
+                        <span id="bmi-category"></span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="weight-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Water Intake Card -->
+                <div class="card water-card">
+                    <h2>Water Intake</h2>
+                    <div class="water-tracker">
+                        <div class="water-controls">
+                            <button class="water-btn" id="water-minus">-</button>
+                            <span><span id="water-count">0</span> / <span id="water-goal">8</span> glasses</span>
+                            <button class="water-btn" id="water-plus">+</button>
+                        </div>
+                        <div class="progress-bar">
+                            <div id="water-progress-bar" class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="water-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Step Counter Card -->
+                <div class="card steps-card">
+                    <h2>Step Counter</h2>
+                    <div class="steps-input">
+                        <input type="number" id="steps-input" placeholder="Enter today's steps">
+                        <button id="steps-submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <div class="steps-stats">
+                        <div class="stat-box">
+                            <div class="stat-label">Calories burned</div>
+                            <div class="stat-value" id="calories-burned">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Distance</div>
+                            <div class="stat-value"><span id="distance">0</span> km</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="steps-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Activity Tracker Card -->
+                <div class="card activity-card">
+                    <h2>Track Your Activity</h2>
+                    <form id="activity-form">
+                        <select id="activity-type" required>
+                            <option value="">Select activity</option>
+                            <option value="walking">Walking</option>
+                            <option value="running">Running</option>
+                            <option value="cycling">Cycling</option>
+                            <option value="swimming">Swimming</option>
+                            <option value="strength">Strength Training</option>
+                            <option value="yoga">Yoga/Stretching</option>
+                            <option value="meditation">Meditation</option>
+                        </select>
+                        <div class="activity-input">
+                            <input type="number" id="activity-duration" placeholder="Duration (minutes)" required>
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </form>
+                    <div id="activity-list" class="activity-list"></div>
+                </div>
+
+                <!-- Suggestions Card -->
+                <div class="card suggestions-card">
+                    <h2>Today's Suggestions</h2>
+                    <ul class="suggestions-list">
+                        <li><i class="fas fa-tint"></i> Drink 8 glasses of water</li>
+                        <li><i class="fas fa-walking"></i> Take 10,000 steps</li>
+                        <li><i class="fas fa-running"></i> 15 minutes of stretching</li>
+                        <li><i class="fas fa-bed"></i> 7-8 hours of sleep</li>
+                        <li><i class="fas fa-brain"></i> 10 minutes of meditation</li>
+                    </ul>
+                </div>
+
+                <!-- User Profile Card -->
+                <div class="card profile-card">
+                    <h2>Your Profile</h2>
+                    <div class="profile-info">
+                        <div class="profile-picture">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-details">
+                            <h3 id="profile-name"></h3>
+                            <p class="member-since">Member since <span id="member-since"></span></p>
+                        </div>
+                    </div>
+                    <div class="profile-stats">
+                        <div class="profile-stat">
+                            <span class="stat-label">Height</span>
+                            <span class="stat-value" id="profile-height">-</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-label">Weight</span>
+                            <span class="stat-value" id="profile-weight">-</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-label">Age</span>
+                            <span class="stat-value" id="profile-age">-</span>
+                        </div>
+                        <div class="profile-stat">
+                            <span class="stat-label">Gender</span>
+                            <span class="stat-value" id="profile-gender">-</span>
+                        </div>
+                    </div>
+                    <button id="update-bmi-btn" class="btn btn-outline">Update BMI</button>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="dashboard.js"></script>
+</body>
+</html>

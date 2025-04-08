@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Pro - BMI Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="bmi-card">
+            <div class="bmi-header">
+                <h1>Let's Calculate Your BMI</h1>
+                <p>Enter your details to get personalized fitness recommendations</p>
+            </div>
+            <div class="bmi-content">
+                <form id="bmi-form">
+                    <div class="form-group">
+                        <label for="height">Height (cm)</label>
+                        <input type="number" id="height" min="100" max="250" placeholder="Enter your height" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Weight (kg)</label>
+                        <input type="number" id="weight" min="30" max="300" placeholder="Enter your weight" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" min="12" max="120" placeholder="Enter your age" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <div class="gender-selector">
+                            <div class="gender-option">
+                                <input type="radio" name="gender" id="gender-male" value="male" checked>
+                                <label for="gender-male">Male</label>
+                            </div>
+                            <div class="gender-option">
+                                <input type="radio" name="gender" id="gender-female" value="female">
+                                <label for="gender-female">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Calculate BMI</button>
+                </form>
+                
+                <div id="bmi-result" class="hidden">
+                    <div class="result-card">
+                        <h3>Your BMI: <span id="bmi-value">0</span></h3>
+                        <p id="bmi-category">Category: -</p>
+                        <div class="bmi-scale">
+                            <div class="scale-labels">
+                                <span>Underweight</span>
+                                <span>Normal</span>
+                                <span>Overweight</span>
+                                <span>Obese</span>
+                            </div>
+                            <div class="scale-bar">
+                                <div class="scale-indicator" id="bmi-indicator"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="proceed-btn" class="btn btn-primary">Proceed to Dashboard</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="bmi.js"></script>
+</body>
+</html>
